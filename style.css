@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 :root {
     --main-bg-color: #212121;
     --main-fg-color: #e8e8e8;
@@ -12,12 +16,9 @@ body {
 header {
     width: 92%;
     max-width: 1200px;
-
     margin: 0 auto;
     padding: 20px 0;
-
     border-bottom: 1px solid var(--main-fg-color);
-
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -26,24 +27,33 @@ header {
 h1 {
     margin: 0;
     padding: 0;
-
     color: var(--main-fg-color);
 }
 
 .modeButton {
-    width: 30px;
+    width: 50px;
     height: 30px;
+    border-radius: 15px;
+    padding: 5px;
     background-color: white;
-    cursor: pointer;
+    position: relative;
+}
+
+.mbSlider {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    background-color: black;
+    position: absolute;
+    left: 5px;
+    transition: left .5s;
 }
 
 main {
     width: 92%;
     max-width: 1200px;
-
     margin: 0 auto;
     padding: 20px 0;
-
     border-bottom: 1px solid var(--main-fg-color);
 }
 
