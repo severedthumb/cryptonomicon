@@ -35,28 +35,43 @@ h1 {
     height: 30px;
     border-radius: 15px;
     padding: 5px;
-    background-color: white;
+    background-color: var(--main-fg-color);
     position: relative;
+    transition: background-color .5s;
 }
 
 .mbSlider {
     width: 20px;
     height: 20px;
     border-radius: 10px;
-    background-color: black;
+    background-color: var(--main-bg-color);
     position: absolute;
     left: 5px;
-    transition: left .5s;
+    transition: left .5s, background-color .5s;
 }
 
 main {
     width: 92%;
     max-width: 1200px;
     margin: 0 auto;
+
+}
+
+.introduction {
     padding: 20px 0;
     border-bottom: 1px solid var(--main-fg-color);
 }
 
 p {
     color: var(--main-fg-color);
+}
+
+h2 {
+    margin: 16px 0;
+    color: var(--main-fg-color);
+}
+
+.chapters {
+    padding: 20px 0 0;
+
 }

@@ -12,11 +12,13 @@ modeButton.addEventListener('click', () => {
         root.style.setProperty('--main-bg-color', fgColor);
         root.style.setProperty('--main-fg-color', bgColor);
         modeButton.setAttribute('nd', 'day');
+        modeButton.style.backgroundColor = bgColor;
         mbSlider.style.left = '25px';
     } else if (modeButton.getAttribute('nd') == 'day') {
         root.style.setProperty('--main-bg-color', bgColor);
         root.style.setProperty('--main-fg-color', fgColor);
         modeButton.setAttribute('nd', 'night');
         mbSlider.style.left = '5px';
+        modeButton.style.backgroundColor = fgColor;
     }
 });
