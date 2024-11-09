@@ -22,3 +22,25 @@ modeButton.addEventListener('click', () => {
         modeButton.style.backgroundColor = fgColor;
     }
 });
+
+
+const chapterP = document.querySelector('.chapterP');
+
+let stringy = '';
+
+
+/*
+for (let i = 0; i < 600; i++) {
+    stringy = stringy + Math.round(Math.random());
+    chapterP.innerHTML = stringy;
+};
+*/
+
+
+chapterP.innerHTML = '';
+
+for (let i = 0; i < 600; i++) {
+    setTimeout(() => {
+        chapterP.innerHTML = chapterP.innerHTML + Math.round(Math.random());
+    }, i * 5);
+}
