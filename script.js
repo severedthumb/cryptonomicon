@@ -29,11 +29,8 @@ modeButton.addEventListener('click', () => {
 
 // CHAPTER DROP-DOWN CODE
 
-const chapter = document.querySelector('.chapter');
-const chapterH = chapter.firstElementChild;
-const chapterP = chapterH.nextElementSibling;
-
-chapterH.addEventListener('click', () => {
+function dropDown(e) {
+    let chapterP = e.target.nextElementSibling;
     if (chapterP.style.display === 'block') {
         chapterP.style.display = 'none';
     } else {
@@ -49,7 +46,14 @@ chapterH.addEventListener('click', () => {
             }, i * 5)
         }
     }
-})
+};
+
+let chapters = document.getElementsByClassName('chapter');
+
+for (chapter of chapters) {
+    chapter.addEventListener('click', dropDown);
+};
+
 
 
 
