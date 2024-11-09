@@ -1,3 +1,5 @@
+// DAY MODE & NIGHT MODE CODE
+
 const root = document.querySelector(':root');
 const rootStyle = getComputedStyle(root);
 
@@ -24,18 +26,40 @@ modeButton.addEventListener('click', () => {
 });
 
 
+
+// CHAPTER DROP-DOWN CODE
+
+const chapter = document.querySelector('.chapter');
+const chapterH = chapter.firstElementChild;
+const chapterP = chapterH.nextElementSibling;
+
+chapterH.addEventListener('click', () => {
+    if (chapterP.style.display === 'block') {
+        chapterP.style.display = 'none';
+    } else {
+        chapterP.style.display = 'block';
+
+        let text = chapterP.innerHTML;
+
+        chapterP.innerHTML = '';
+
+        for (let i = 0; i < text.length; i++) {
+            setTimeout(() => {
+                chapterP.innerHTML = chapterP.innerHTML + text[i];
+            }, i * 5)
+        }
+    }
+})
+
+
+
+
+
+/* CHAPTER 1s AND 0s EFFECT
+
 const chapterP = document.querySelector('.chapterP');
 
 let stringy = '';
-
-
-/*
-for (let i = 0; i < 600; i++) {
-    stringy = stringy + Math.round(Math.random());
-    chapterP.innerHTML = stringy;
-};
-*/
-
 
 chapterP.innerHTML = '';
 
@@ -44,3 +68,5 @@ for (let i = 0; i < 600; i++) {
         chapterP.innerHTML = chapterP.innerHTML + Math.round(Math.random());
     }, i * 5);
 }
+
+*/
