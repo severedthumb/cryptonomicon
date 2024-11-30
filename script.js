@@ -1,5 +1,4 @@
 // DAY MODE & NIGHT MODE CODE
-
 const root = document.querySelector(':root');
 const rootStyle = getComputedStyle(root);
 
@@ -30,47 +29,82 @@ modeButton.addEventListener('click', () => {
 // CHAPTER DROP-DOWN CODE
 
 function dropDown(e) {
-    let chapterP = e.target.nextElementSibling;
-    if (chapterP.style.display === 'block') {
-        chapterP.style.display = 'none';
+    let entry = e.target.nextElementSibling;
+    if (entry.style.display === 'block') {
+        entry.style.display = 'none';
     } else {
-        chapterP.style.display = 'block';
-
-        let text = chapterP.innerHTML;
-
-        chapterP.innerHTML = '';
-
-        for (let i = 0; i < text.length; i++) {
-            setTimeout(() => {
-                chapterP.innerHTML = chapterP.innerHTML + text[i];
-            }, i * 5)
-        }
+        entry.style.display = 'block';
     }
 };
 
-let chapters = document.getElementsByClassName('chapter');
+let headings = document.getElementsByClassName('entryHeading');
 
-for (chapter of chapters) {
-    chapter.addEventListener('click', dropDown);
+for (heading of headings) {
+    heading.addEventListener('click', dropDown);
 };
 
 
 
 
 
+// DIFFERENT CONTENT-LOADING IDEAS AND EXPERIMENTATION
 
-/* CHAPTER 1s AND 0s EFFECT
+const prologue = document.getElementById('prologue');
+const barrens = document.getElementById('barrens');
 
-const chapterP = document.querySelector('.chapterP');
 
-let stringy = '';
+// THIS IS THE HARD-CODED WAY OF DOING THIS, WITH NO FETCH REQUEST
+/*
+const prologue = [
+    "Here is a paragraph.",
+    "$And here is a \"second\" paragraph.",
+    "I'm adding a third paragraph. How 'bout that?"
+]
 
-chapterP.innerHTML = '';
-
-for (let i = 0; i < 600; i++) {
-    setTimeout(() => {
-        chapterP.innerHTML = chapterP.innerHTML + Math.round(Math.random());
-    }, i * 5);
-}
-
+for(let i = 0; i < prologue.length; i++) {
+    if(prologue[i][0] == '$') {
+        let quote = document.createElement('blockquote');
+        quote.textContent = prologue[i].slice(1);
+        gabagool.appendChild(quote);
+    } else {
+        let paragraph = document.createElement('p');
+        paragraph.textContent = prologue[i];
+        gabagool.appendChild(paragraph);
+    }
+};
 */
+
+// THIS IS THE WAY OF DOING THIS WITH A FETCH REQUEST
+
+fetch('https://severedthumb.studio/prologue')
+    .then((res) => res.json())
+    .then((res) => {
+        for(let i = 0; i < res.length; i++) {
+            if(res[i][0] == '$') {
+                let quote = document.createElement('blockquote');
+                quote.textContent = res[i].slice(1);
+                prologue.appendChild(quote);
+            } else {
+                let paragraph = document.createElement('p');
+                paragraph.textContent = res[i];
+                prologue.appendChild(paragraph);
+            }
+        }
+    });
+
+
+fetch('https://severedthumb.studio/barrens')
+.then((res) => res.json())
+.then((res) => {
+    for(let i = 0; i < res.length; i++) {
+        if(res[i][0] == '$') {
+            let quote = document.createElement('blockquote');
+            quote.textContent = res[i].slice(1);
+            barrens.appendChild(quote);
+        } else {
+            let paragraph = document.createElement('p');
+            paragraph.textContent = res[i];
+            barrens.appendChild(paragraph);
+        }
+    }
+})
